@@ -15,4 +15,4 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: run py script
-      run: python print.py
+      run: python hello.py
