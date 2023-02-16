@@ -2,9 +2,9 @@ name: Run custom Docker container from Docker Hub
 
 on: [push, pull_request]
 
-env:
-  DOCKERHUB_USERNAME: 'psrv3'
-  DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+# env:
+#   DOCKERHUB_USERNAME: 'psrv3'
+#   DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
 
 jobs:
   run-docker-container:
@@ -14,11 +14,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{DOCKERHUB_USERNAME}}
-          password: ${{ env.DOCKERHUB_PASSWORD }}
+#       - name: Log in to Docker Hub
+#         uses: docker/login-action@v1
+#         with:
+#           username: ${{DOCKERHUB_USERNAME}}
+#           password: ${{ env.DOCKERHUB_PASSWORD }}
 
       - name: Pull Docker image
         run: docker pull psrv3/newfa
