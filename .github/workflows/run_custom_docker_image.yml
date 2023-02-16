@@ -20,6 +20,9 @@ jobs:
         run: sleep 100s
         shell: bash
         
+      - name: Ping app
+        run: ping http://127.0.0.1:5001
+        
       - name: Check Docker logs
         run: docker logs mycontainer > logs.txt
         
