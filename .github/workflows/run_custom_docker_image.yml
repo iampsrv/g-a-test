@@ -21,7 +21,7 @@ jobs:
         shell: bash
         
       - name: Install ping
-        run: apt install iputils-ping
+        run: sudo apt install iputils-ping
       - name: Ping app
         run: ping http://127.0.0.1:5001
         
