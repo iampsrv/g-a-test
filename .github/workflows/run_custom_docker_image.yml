@@ -16,8 +16,8 @@ jobs:
       - name: Run Docker container
         run: docker run -d -p 5001:5001 --name mycontainer psrv3/newfa
      
-      - name: Sleep for 50 seconds
-        run: sleep 50s
+      - name: Sleep for 100 seconds
+        run: sleep 100s
         shell: bash
         
       - name: Check Docker logs
