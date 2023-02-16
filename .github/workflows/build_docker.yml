@@ -1,4 +1,4 @@
-name: Build Docker image
+name: Build Docker image and push to github package
 
 on: [push, pull_request]
 
@@ -28,7 +28,6 @@ jobs:
     permissions: 
       contents: read
       packages: write 
-    needs: build
     steps:
     - name: Checkout
       uses: actions/checkout@v2
