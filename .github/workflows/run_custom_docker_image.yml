@@ -24,4 +24,4 @@ jobs:
         run: docker pull psrv3/newfa
 
       - name: Run Docker container
-        run: docker run -it -p 5001:5001 psrv3/newfa
+        run: docker run -d -p 5001:5001 psrv3/newfa
