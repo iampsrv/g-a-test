@@ -1,4 +1,4 @@
-name: Run pytest on Python program
+name: Run pytest on Python program with artefacts
 
 on: [push, pull_request]
 
@@ -23,8 +23,7 @@ jobs:
     - name: Run pytest
       run: pytest test.py
     - name: Run pytest_new 
-        run: |
-          pytest test.py --junitxml=junit/test-results.xml --cov=.
+      run: pytest test.py --junitxml=junit/test-results.xml --cov=.
     - name: Upload test results
       uses: actions/upload-artifact@v2
       with:
