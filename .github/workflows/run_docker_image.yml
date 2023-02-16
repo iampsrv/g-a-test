@@ -1,8 +1,6 @@
 name: Run Docker container from Docker Hub
 
-on:
-  push:
-    branches: [main]
+on: [push, pull_request]
 
 # env:
 #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
