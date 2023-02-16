@@ -1,0 +1,29 @@
+name: Run Docker container from Docker Hub
+
+on:
+  push:
+    branches: [main]
+
+# env:
+#   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+#   DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+jobs:
+  run-docker-container:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+#       - name: Log in to Docker Hub
+#         uses: docker/login-action@v1
+#         with:
+#           username: ${{ env.DOCKERHUB_USERNAME }}
+#           password: ${{ env.DOCKERHUB_PASSWORD }}
+
+#       - name: Pull Docker image
+#         run: docker pull <your-dockerhub-username>/<your-docker-image-name>:<your-docker-image-tag>
+
+      - name: Run Docker container
+        run: docker run hello-world
