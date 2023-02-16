@@ -21,7 +21,7 @@ jobs:
           password: ${{ env.DOCKERHUB_PASSWORD }}
 
       - name: Pull Docker image
-        run: docker psrv3/newfa
+        run: docker pull psrv3/newfa
 
       - name: Run Docker container
         run: docker run -it -p 5001:5001 psrv3/newfa
