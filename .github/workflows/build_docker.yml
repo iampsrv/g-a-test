@@ -1,0 +1,43 @@
+name: Build Docker image
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.7]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: python -m pip install --upgrade pip && pip install -r req.txt
+    - name: Run Factorial program
+      run: python factorial.py
+    - name: Test with pytest
+      run: pytest test.py
+      
+  build-and-push-image:
+    runs-on: ubuntu-latest 
+    permissions: 
+      contents: read
+      packages: write 
+    needs: build
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build container image
+      uses: docker/build-push-action@v1
+      with: 
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: ${{ github.repository }}/python-flask-github-action-package
+        tag_with_sha: true
+        tag_with_ref: true       
