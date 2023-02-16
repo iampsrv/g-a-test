@@ -20,6 +20,8 @@ jobs:
         run: sleep 100s
         shell: bash
         
+      - name: Install ping
+        run: apt install iputils-ping
       - name: Ping app
         run: ping http://127.0.0.1:5001
         
